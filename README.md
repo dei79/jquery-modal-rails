@@ -9,6 +9,7 @@ In your Gemfile, add:
 
 ```ruby
 group :assets do
+  gem 'jquery-ui-rails'
   gem 'jquery-modal-rails', :git => 'git://github.com/dei79/jquery-modal-rails.git'
 end
 ```
@@ -18,6 +19,7 @@ end
 To require the jQuery modal modules, add the following to your application.js:
 
 ```javascript
+//= require jquery.ui.all
 //= require jquery.modal
 ```
 
@@ -25,6 +27,7 @@ Also add the jQuery modal CSS to your application.css:
 
 ```css
 /*
+ *= require jquery.ui.all
  *= require jquery.modal
  */
 ```
