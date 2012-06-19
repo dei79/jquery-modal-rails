@@ -30,10 +30,23 @@ Also add the jQuery modal CSS to your application.css:
 ```
 
 All images required by jQuery Modal are automatically served through the asset
-pipeline, so you are good to go! For example, this code will open a view as a
-modal dialog
+pipeline, so you are good to go! For example, this code will open a given DIV
+as a modal dialog
 
 ```sample
-<a href="/users/new" rel="modal:open">New User</a>
+<div id="demo-form" class="demo-description" style="display: none; ">
+  <p>
+    The basic dialog window is an overlay positioned within the viewport and is protected from page content
+    (like select elements) shining through with an iframe. It has a title bar and a content area, and can be moved,
+    resized and closed with the 'x' icon by default.
+  </p>
+</div>
+
+<%=  link_to_modal "Demo Form", "#demo-form", :class=>"button" %>
 ```
 
+Opening an existing view via AJAX as a modal dialog is that easy:
+
+```sample2
+<%=  link_to_modal "New User", new_user_path, :class=>"button" %>
+```
