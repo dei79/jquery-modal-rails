@@ -1,3 +1,4 @@
+require 'uuidtools'
 require 'jquery/modal/helpers/link_helpers.rb'
 
 module Jquery
