@@ -56,3 +56,4 @@ Opening an existing view via AJAX as a modal dialog is that easy:
 Thank you to the following wonderful people and projects for contributing to jquery-modal-rails:
 
 * @kylefox with https://github.com/kylefox/jquery-modal
+* @joliss with https://github.com/joliss/jquery-ui-rails
