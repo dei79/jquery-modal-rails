@@ -1,0 +1,1 @@
+require 'jquery/modal/rails'

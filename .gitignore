@@ -1,0 +1,4 @@
+.bundle/
+.idea/
+*.gem
+.DS_Store
