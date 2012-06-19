@@ -33,7 +33,7 @@ All images required by jQuery Modal are automatically served through the asset
 pipeline, so you are good to go! For example, this code will open a given DIV
 as a modal dialog
 
-```sample
+```rails
 <div id="demo-form" class="demo-description" style="display: none; ">
   <p>
     The basic dialog window is an overlay positioned within the viewport and is protected from page content
@@ -47,6 +47,12 @@ as a modal dialog
 
 Opening an existing view via AJAX as a modal dialog is that easy:
 
-```sample2
+```rails
 <%=  link_to_modal "New User", new_user_path, :class=>"button" %>
 ```
+
+## Contributors
+
+Thank you to the following wonderful people and projects for contributing to jquery-modal-rails:
+
+* @kylefox with https://github.com/kylefox/jquery-modal
