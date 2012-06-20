@@ -22,7 +22,7 @@ module Jquery
       # add the javascript portion
       js_code ="
 <script>
-    $('##{html_options[:id]}').on($.modal.AJAX_SUCCESS_DONE, function() {
+    $('##{html_options[:id]}').on($.modal.AJAX_COMPLETE, function() {
         $('form').submit(function(){
             $.ajax({
                 type: this.method,
