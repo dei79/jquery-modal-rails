@@ -56,9 +56,16 @@ Opening an existing view via AJAX as a modal dialog is that easy:
 
 ## Forms-Support
 
-The helper link_to_modal offers basic forms support. This means the solution injects javascript the find the different
-form-Tags in the received html and attaches a submit handler. This handler submits via $.ajax and closes the form
-when nothing went wrong. Currently the Rails backend needs to support JSON requests on the controller action.
+The link_to_modal helper offers forms support. The following parameter ensures that every form which is part
+of the received html content will be submitted via AJAX request. As a requirement the controller action needs
+to support JSON
+
+```rails
+<%= link_to_modal 'New User', new_user_path, :remote => true %>
+```
+
+In this mode, all anchors with the id "cancel" will be mapped to the close dialog operation so that your standard
+rails view will close the dialog
 
 ## Contributors
 
