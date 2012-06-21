@@ -1,0 +1,31 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<div id="diag" style="display:none;">Hudel Welcom Coll</div>
+
+<%= link_to 'New User Normal', new_user_path %><BR/>
+<%= link_to_modal 'New User Modal', new_user_path %><BR/>
+
+<%= link_to_modal 'New User Modal Sized', new_user_path, :width=> "600", :height =>"400", :remote => true %><BR/>
+
+<%= link_to_modal 'DIV in the page', "#diag" %><BR/>
