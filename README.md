@@ -64,8 +64,14 @@ to support JSON
 <%= link_to_modal 'New User', new_user_path, :remote => true %>
 ```
 
-In this mode, all anchors with the id "cancel" will be mapped to the close dialog operation so that your standard
-rails view will close the dialog
+## Cancel or Close buttons
+
+All anchors generated with the link_to helper can be marked as a dialog close button. Just use the following
+sample:
+
+```rails
+<%= link_to 'Cancel', users_path, :rel => "modal:close" %>
+```
 
 ## Contributors
 
