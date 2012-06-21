@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.new
 
     # just sleep 5 seconds
-    sleep 5
+    sleep 2
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     # just sleep 5 seconds
-    sleep 5
+    sleep 2
 
     respond_to do |format|
       if @user.save

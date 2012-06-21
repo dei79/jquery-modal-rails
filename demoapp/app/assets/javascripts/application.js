@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.modal
+//= require jquery.modal.rails
 //= require_tree .
