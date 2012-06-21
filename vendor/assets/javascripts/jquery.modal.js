@@ -138,6 +138,18 @@
     current = null;
   };
 
+  $.modal.showSpinner = function(event) {
+    if (!current) return;
+    if (event) event.preventDefault();
+    current.showSpinner();
+  }
+
+  $.modal.hideSpinner = function(event) {
+    if (!current) return;
+    if (event) event.preventDefault();
+    current.hideSpinner();
+  }
+
   $.modal.resize = function() {
     if (!current) return;
     current.resize();
@@ -181,4 +193,5 @@
     event.preventDefault();
     $(this).modal();
   });
+
 })(jQuery);

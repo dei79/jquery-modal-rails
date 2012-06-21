@@ -3,3 +3,5 @@
 *.gem
 .DS_Store
 Gemfile.lock
+demoapp/log/
+demoapp/tmp/

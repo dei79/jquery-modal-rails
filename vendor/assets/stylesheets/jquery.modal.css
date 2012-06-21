@@ -41,4 +41,5 @@
   -o-border-radius: 8px;
   -ms-border-radius: 8px;
   border-radius: 8px;
+  z-index: 9999;
 }
