@@ -150,6 +150,13 @@
     current.hideSpinner();
   }
 
+  $.modal.getWidget = function() {
+    if (!current)
+        return null;
+    else
+        return current.$elm;
+  }
+
   $.modal.resize = function() {
     if (!current) return;
     current.resize();
@@ -187,11 +194,60 @@
     return this;
   };
 
-  // Automatically bind links with rel="modal:close" to, well, close the modal.
-  $(document).on('click', 'a[rel="modal:close"]', $.modal.close);
-  $(document).on('click', 'a[rel="modal:open"]', function(event) {
-    event.preventDefault();
-    $(this).modal();
-  });
+    // Automatically bind links with rel="modal:close" to, well, close the modal.
+    $(document).on('click', 'a[rel="modal:close"]', $.modal.close);
+    $(document).on('click', 'a[rel="modal:open"]', function(event) {
+        event.preventDefault();
+        $(this).modal();
+    });
+
+    // Automatically bind links with rel="modal:open:ajaxpost" to
+    $(document).on('click', 'a[rel="modal:open:ajaxpost"]', function(event)
+    {
+        //ensure that our custom events will be received
+        event.preventDefault();
+
+        // show the dialog
+        $(this).modal();
+
+        // bind the event when the ajax call is completed
+        $(this).bind($.modal.AJAX_COMPLETE, function() {
+            // configure the submit handler
+            $('form').submit(function(){
+
+                // show the spinner again
+                $.modal.showSpinner();
+
+                // send the ajax call
+                $.ajax({
+                    type: this.method,
+                    url: this.action + '.json',
+                    data: $(this).serialize(),
+                    dataType: 'html',
+                    success: function(data)
+                    {
+                        // hide the sinner
+                        $.modal.hideSpinner();
+
+                        // close the dialog
+                        $.modal.close();
+                    },
+                    error: function(data)
+                    {
+                        // hide the sinner
+                        $.modal.hideSpinner();
+
+                        //alert
+                        alert('It as not possible the perform the operation');
+                    }
+                });
+                return false;
+            });
+        });
+
+
+        // return false to prevent normal anchor action
+        return false;
+    });
 
 })(jQuery);
