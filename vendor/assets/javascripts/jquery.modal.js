@@ -215,6 +215,9 @@
             // configure the submit handler
             $('form').submit(function(){
 
+                // save the current form
+                current_form = $(this);
+
                 // show the spinner again
                 $.modal.showSpinner();
 
@@ -237,8 +240,17 @@
                         // hide the sinner
                         $.modal.hideSpinner();
 
-                        //alert
-                        alert('It as not possible the perform the operation');
+                        // remove the older error message
+                        current_form.find(".error").remove()
+
+                        // parse the result
+                        var obj = jQuery.parseJSON(data.responseText);
+
+                        $.each(obj.errors, function(key, value)
+                        {
+
+                           current_form.find("#"+ current_form.attr("id").split('_').pop()+ "_" + key).after('<span class="error">'+ value[0] + '</span>');
+                        });
                     }
                 });
                 return false;
