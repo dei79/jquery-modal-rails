@@ -10,7 +10,7 @@ In your Gemfile, add:
 ```ruby
 group :assets do
   gem 'jquery-ui-rails'
-  gem 'jquery-modal-rails', :git => 'git://github.com/dei79/jquery-modal-rails.git'
+  gem 'jquery-modal-rails'
 end
 ```
 
