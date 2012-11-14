@@ -46,9 +46,4 @@ describe Jquery::Helpers do
   it "does not crash with only two paraemters" do
     link_to_modal('New User Modal', "http://google.de").should_not be_nil
   end
-
-  it "should generate the right sizing information" do
-    link = link_to_modal('New User Modal Sized', "http://www.google.de", :id => 1, :width=> "600", :height =>"400", :remote => true)
-    link.should eq('<a href="http://www.google.de" id="1" rel="modal:open:ajaxpost">New User Modal Sized</a>')
-  end
 end
