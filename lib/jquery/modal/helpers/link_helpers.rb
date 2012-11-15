@@ -13,7 +13,7 @@ module Jquery
       if block_given?
         options      = args.first || {}
         html_options = args.second
-        block_result = yield(*args)
+        block_result = capture(&block)
         link_to_modal(block_result, options, html_options)
       else
         name         = args[0]
