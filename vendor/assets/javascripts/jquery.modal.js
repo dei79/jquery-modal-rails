@@ -1,12 +1,13 @@
 /*
     A simple jQuery modal (http://github.com/kylefox/jquery-modal)
-    Version 0.5
+    Version 0.5.3
 */
 (function($) {
 
   var current = null;
 
   $.modal = function(el, options) {
+    $.modal.close(); // Close any open modals.
     var remove, target;
     this.$body = $('body');
     this.options = $.extend({}, $.modal.defaults, options);
@@ -135,27 +136,10 @@
     if (!current) return;
     if (event) event.preventDefault();
     current.close();
+    var that = current.$elm;
     current = null;
+    return that;
   };
-
-  $.modal.showSpinner = function(event) {
-    if (!current) return;
-    if (event) event.preventDefault();
-    current.showSpinner();
-  }
-
-  $.modal.hideSpinner = function(event) {
-    if (!current) return;
-    if (event) event.preventDefault();
-    current.hideSpinner();
-  }
-
-  $.modal.getWidget = function() {
-    if (!current)
-        return null;
-    else
-        return current.$elm;
-  }
 
   $.modal.resize = function() {
     if (!current) return;
@@ -194,72 +178,10 @@
     return this;
   };
 
-    // Automatically bind links with rel="modal:close" to, well, close the modal.
-    $(document).on('click', 'a[rel="modal:close"]', $.modal.close);
-    $(document).on('click', 'a[rel="modal:open"]', function(event) {
-        event.preventDefault();
-        $(this).modal();
-    });
-
-    // Automatically bind links with rel="modal:open:ajaxpost" to
-    $(document).on('click', 'a[rel="modal:open:ajaxpost"]', function(event)
-    {
-        //ensure that our custom events will be received
-        event.preventDefault();
-
-        // show the dialog
-        $(this).modal();
-
-        // bind the event when the ajax call is completed
-        $(this).bind($.modal.AJAX_COMPLETE, function() {
-            // configure the submit handler
-            $('form').submit(function(){
-
-                // save the current form
-                current_form = $(this);
-
-                // show the spinner again
-                $.modal.showSpinner();
-
-                // send the ajax call
-                $.ajax({
-                    type: this.method,
-                    url: this.action + '.json',
-                    data: $(this).serialize(),
-                    dataType: 'html',
-                    success: function(data)
-                    {
-                        // hide the sinner
-                        $.modal.hideSpinner();
-
-                        // close the dialog
-                        $.modal.close();
-                    },
-                    error: function(data)
-                    {
-                        // hide the sinner
-                        $.modal.hideSpinner();
-
-                        // remove the older error message
-                        current_form.find(".error").remove()
-
-                        // parse the result
-                        var obj = jQuery.parseJSON(data.responseText);
-
-                        $.each(obj.errors, function(key, value)
-                        {
-
-                           current_form.find("#"+ current_form.attr("id").split('_').pop()+ "_" + key).after('<span class="error">'+ value[0] + '</span>');
-                        });
-                    }
-                });
-                return false;
-            });
-        });
-
-
-        // return false to prevent normal anchor action
-        return false;
-    });
-
+  // Automatically bind links with rel="modal:close" to, well, close the modal.
+  $(document).on('click.modal', 'a[rel="modal:close"]', $.modal.close);
+  $(document).on('click.modal', 'a[rel="modal:open"]', function(event) {
+    event.preventDefault();
+    $(this).modal();
+  });
 })(jQuery);
