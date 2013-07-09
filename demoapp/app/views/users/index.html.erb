@@ -21,7 +21,8 @@
 </table>
 
 <br />
-<div id="diag" style="display:none;">Hudel Welcom Coll</div>
+<div id="diag" style="display:none;">Hudel Welcom Coll <%= link_to_modal 'Another DIV in the page', "#diag2" %></div>
+<div id="diag2" style="display:none;">Hey you</div>
 
 <%= link_to 'New User Normal', new_user_path %><BR/>
 <%= link_to_modal 'New User Modal', new_user_path %><BR/>
