@@ -18,6 +18,7 @@
       if (/^#/.test(target)) {
         this.$elm = $(target);
         if (this.$elm.length !== 1) return null;
+        this.$body.append(this.$elm);
         this.open();
       //AJAX
       } else {
