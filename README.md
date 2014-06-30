@@ -1,3 +1,5 @@
+###Currently I moved to angular-js for all my web applications. Because of that I do not maintaining this project any more. It would be a pleasure for me to hand this project over. Please just send me a note or create a issue if you are the one. 
+
 jquery-modal-rails
 ==================
 
