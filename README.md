@@ -21,7 +21,7 @@ end
 To require the jQuery modal modules, add the following to your application.js:
 
 ```javascript
-//= require jquery.ui.all
+//= require jquery-ui
 //= require jquery.modal
 ```
 
@@ -29,7 +29,7 @@ Also add the jQuery modal CSS to your application.css:
 
 ```css
 /*
- *= require jquery.ui.all
+ *= require jquery-ui
  *= require jquery.modal
  */
 ```
