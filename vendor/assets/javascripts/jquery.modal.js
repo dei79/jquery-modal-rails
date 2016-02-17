@@ -102,6 +102,7 @@
     },
 
     show: function() {
+      $('body').css('overflow', 'hidden');
       this.$elm.trigger($.modal.BEFORE_OPEN, [this._ctx()]);
       if (this.options.showClose) {
         this.closeButton = $('<a href="#close-modal" rel="modal:close" class="close-modal">' + this.options.closeText + '</a>');
@@ -118,6 +119,7 @@
     },
 
     hide: function() {
+      $('body').css('overflow', 'auto');
       this.$elm.trigger($.modal.BEFORE_CLOSE, [this._ctx()]);
       if (this.closeButton) this.closeButton.remove();
       this.$elm.removeClass('current');
